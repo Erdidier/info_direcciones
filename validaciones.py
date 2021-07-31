@@ -6,6 +6,8 @@ Creado: Viernes Julio 30 del 2021
 
 import os
 from colorama import Fore as color
+from colorama import init
+import colorama
 
 def limpiar_consola():
     if os.name == "posix":
@@ -14,6 +16,7 @@ def limpiar_consola():
         os.system ("cls")
 
 def validarIP(ip):
+    init(autoreset=True)
     octetos=ip.count(".")
     hexatetos=ip.count(":")
     try:
@@ -54,7 +57,7 @@ def validarIP(ip):
                 if o.isdigit():##validar que sean todos numeros
                     pass
                 else:##si no llegara a ser numero alguno
-                    print("ERROR: TODOS LOS VALORES EN LA IPv4 DEBE SER NUMEROS")
+                    print(color.RED+"ERROR: TODOS LOS VALORES EN LA IPv4 DEBE SER NUMEROS")
                     input(color.YELLOW+"Presionar ENTER para continuar")
                     limpiar_consola()
                     return False
@@ -68,7 +71,8 @@ def validarIP(ip):
                     return False
                 else:
                     pass
-            
+            print(color.GREEN+"ESTADO IPv4: VALIDA")
+            return True
 
 
         elif hexatetos==7 and octetos==0:
