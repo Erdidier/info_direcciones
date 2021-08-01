@@ -23,7 +23,7 @@ def validarIP(ip):
         if octetos==0 and hexatetos==0:##si no encuentra IPv4 ni IPv6
             print(color.RED+"ERROR: PORFAVOR INGRESA UNA IPv4 o IPv6 VALIDA")
             print(color.RED+"Las IPv4 deben contar con puntos ('.') y 4 octetos")
-            print(color.RED+"Las IPv6 deben contar con doble puntos ('.') y 9 hexatetos")
+            print(color.RED+"Las IPv6 deben contar con doble puntos (':') y 9 hexatetos")
             input(color.YELLOW+"Presionar ENTER para continuar")
             limpiar_consola()
             return False
@@ -31,7 +31,7 @@ def validarIP(ip):
         elif octetos>0 and octetos<3 and hexatetos>0 and hexatetos<7:##si encuentra caracteres de ambos
             print(color.RED+"ERROR: PORFAVOR INGRESA UNA IPv4 o IPv6 VALIDA")
             print(color.RED+"Las IPv4 deben contar con puntos ('.') y 4 octetos")
-            print(color.RED+"Las IPv6 deben contar con doble puntos ('.') y 9 hexatetos")
+            print(color.RED+"Las IPv6 deben contar con doble puntos (':') y 9 hexatetos")
             input(color.YELLOW+"Presionar ENTER para continuar")
             limpiar_consola()
             return False
@@ -65,7 +65,7 @@ def validarIP(ip):
             for o in l:
                 o=int(o)
                 if o>255:
-                    print("ERROR: LOS NUMEROS NO PUEDEN SER MAYORES A 255")
+                    print(color.RED+"ERROR: LOS NUMEROS NO PUEDEN SER MAYORES A 255")
                     input(color.YELLOW+"Presionar ENTER para continuar")
                     limpiar_consola()
                     return False
@@ -75,7 +75,7 @@ def validarIP(ip):
             return True
 
 
-        elif hexatetos==7 and octetos==0:
+        elif hexatetos==7 and octetos==0:##si detecta IPv6
             hexadecimal=["0","1","2","3","4","5","6","7","8","9","A","B","C","D","E","F"]
             lista=ip.split(":")
             for o in lista:##recorrido por hexateto
